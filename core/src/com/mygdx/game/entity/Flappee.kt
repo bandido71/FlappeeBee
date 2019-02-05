@@ -1,15 +1,12 @@
 package com.mygdx.game.entity
 
-import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Animation
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Circle
-import com.badlogic.gdx.math.MathUtils
-import com.mygdx.game.config.GameConfig
 
-class Flappee(flappeeTexture: Texture) {
+class Flappee(flappeeTexture: TextureRegion) {
     companion object {
         private const val COLLISION_RADIUS = 24f
         private const val DIVE_ACCEL = 0.3f
@@ -19,7 +16,7 @@ class Flappee(flappeeTexture: Texture) {
         private const val FRAME_DURATION = 0.25f
     }
 
-    private lateinit var animation: Animation<TextureRegion>
+    private var animation: Animation<TextureRegion>
     private var animationTimer = 0f
     private var ySpeed = 0f
 

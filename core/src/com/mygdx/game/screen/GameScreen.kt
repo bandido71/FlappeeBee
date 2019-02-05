@@ -2,13 +2,12 @@ package com.mygdx.game.screen
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input
-import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.OrthographicCamera
-import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.GlyphLayout
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.utils.viewport.FitViewport
@@ -16,11 +15,8 @@ import com.mygdx.game.FlappeeBeeGame
 import com.mygdx.game.config.GameConfig
 import com.mygdx.game.entity.Flappee
 import com.mygdx.game.entity.Flower
-import com.mygdx.game.util.Images
 import ktx.app.KtxScreen
 import ktx.app.clearScreen
-import ktx.assets.getAsset
-import ktx.assets.load
 import ktx.collections.GdxArray
 import ktx.graphics.use
 
@@ -34,10 +30,11 @@ class GameScreen(game: FlappeeBeeGame) : KtxScreen {
     private var glyphLayout = GlyphLayout()
     private val assetManager = game.assetManager
 
-    private var background: Texture
-    private var flowerBottom: Texture
-    private var flowerTop: Texture
-    private var flappeeTexture: Texture
+    private var textureAtlas = assetManager.get<TextureAtlas>("flappee_bee_assets.atlas")
+    private var background = textureAtlas.findRegion("bg")
+    private var flowerBottom = textureAtlas.findRegion("flowerBottom")
+    private var flowerTop = textureAtlas.findRegion("flowerTop")
+    private var flappeeTexture = textureAtlas.findRegion("bee")
 
     private var flappee : Flappee
     private var flowers = GdxArray<Flower>()
@@ -46,11 +43,6 @@ class GameScreen(game: FlappeeBeeGame) : KtxScreen {
 
 
     init {
-
-        background = assetManager["bg.png"]
-        flowerBottom = assetManager["flowerBottom.png"]
-        flowerTop = assetManager["flowerTop.png"]
-        flappeeTexture = assetManager["bee.png"]
 
         flappee = Flappee(flappeeTexture)
         flappee.setPosition(GameConfig.WORLD_WIDTH / 4, GameConfig.WORLD_HEIGHT / 2)

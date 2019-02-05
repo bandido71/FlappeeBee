@@ -1,14 +1,14 @@
 package com.mygdx.game.entity
 
-import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Circle
 import com.badlogic.gdx.math.Intersector
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Rectangle
 
-class Flower(private var floorTexture: Texture, private var ceilingTexture: Texture) {
+class Flower(private var floorTexture: TextureRegion, private var ceilingTexture: TextureRegion) {
     companion object {
         private const val COLLISION_RECTANGLE_WIDTH = 13f
         private const val COLLISION_RECTANGLE_HEIGHT = 447f
@@ -70,14 +70,14 @@ class Flower(private var floorTexture: Texture, private var ceilingTexture: Text
     }
 
     private fun drawFloorFlower(batch: SpriteBatch) {
-        var textureX = floorCollisionCircle.x - floorTexture.width / 2
-        var textureY = floorCollisionRectangle.y + COLLISION_CIRCLE_RADIUS
+        val textureX = floorCollisionCircle.x - floorTexture.regionWidth / 2
+        val textureY = floorCollisionRectangle.y + COLLISION_CIRCLE_RADIUS
         batch.draw(floorTexture, textureX, textureY)
     }
 
     private fun drawCeilingFlower(batch: SpriteBatch) {
-        var textureX = ceilingCollisionCircle.x - ceilingTexture.width / 2
-        var textureY = ceilingCollisionRectangle.y - COLLISION_CIRCLE_RADIUS
+        val textureX = ceilingCollisionCircle.x - ceilingTexture.regionWidth / 2
+        val textureY = ceilingCollisionRectangle.y - COLLISION_CIRCLE_RADIUS
         batch.draw(ceilingTexture, textureX, textureY)
     }
 
