@@ -3,6 +3,7 @@ package com.mygdx.game.screen
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.Texture
+import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.utils.viewport.FitViewport
@@ -11,6 +12,7 @@ import com.mygdx.game.config.GameConfig
 import ktx.app.KtxScreen
 import ktx.app.clearScreen
 import ktx.assets.load
+import ktx.assets.toInternalFile
 
 class LoadingScreen(private val game: FlappeeBeeGame) : KtxScreen {
     companion object {
@@ -28,7 +30,8 @@ class LoadingScreen(private val game: FlappeeBeeGame) : KtxScreen {
     init {
         camera.position.set(GameConfig.WORLD_WIDTH / 2, GameConfig.WORLD_HEIGHT / 2, 0f)
         camera.update()
-        assetManager.load<TextureAtlas>("flappee_bee_assets.atlas")
+        assetManager.load<BitmapFont>("font/score.fnt")
+        assetManager.load<TextureAtlas>("images/flappee_bee_assets.atlas")
     }
 
     override fun render(delta: Float) {

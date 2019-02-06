@@ -4,8 +4,8 @@ import com.badlogic.gdx.tools.texturepacker.TexturePacker
 
 object AssetPacker {
     const val DRAW_DEBUG_OUTLINE = false
-    const val RAW_ASSETS_PATH = "android/assets"
-    const val ASSETS_PATH = "android/assets"
+    const val RAW_ASSETS_PATH = "android/assets/images"
+    const val ASSETS_PATH = "android/assets/images"
 }
 
 fun main(args: Array<String>) {

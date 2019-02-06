@@ -17,6 +17,7 @@ import com.mygdx.game.entity.Flappee
 import com.mygdx.game.entity.Flower
 import ktx.app.KtxScreen
 import ktx.app.clearScreen
+import ktx.assets.toInternalFile
 import ktx.collections.GdxArray
 import ktx.graphics.use
 
@@ -26,15 +27,16 @@ class GameScreen(game: FlappeeBeeGame) : KtxScreen {
     private var camera = OrthographicCamera()
     private var viewport = FitViewport(GameConfig.WORLD_WIDTH, GameConfig.WORLD_HEIGHT, camera)
     private var batch = SpriteBatch()
-    private var bitmapFont = BitmapFont()
     private var glyphLayout = GlyphLayout()
     private val assetManager = game.assetManager
 
-    private var textureAtlas = assetManager.get<TextureAtlas>("flappee_bee_assets.atlas")
+    private var textureAtlas = assetManager.get<TextureAtlas>("images/flappee_bee_assets.atlas")
+    private var bitmapFont = assetManager.get<BitmapFont>("font/score.fnt")
     private var background = textureAtlas.findRegion("bg")
     private var flowerBottom = textureAtlas.findRegion("flowerBottom")
     private var flowerTop = textureAtlas.findRegion("flowerTop")
     private var flappeeTexture = textureAtlas.findRegion("bee")
+
 
     private var flappee : Flappee
     private var flowers = GdxArray<Flower>()

@@ -18,10 +18,10 @@ import ktx.app.KtxScreen
 class StartScreen(private val game: FlappeeBeeGame) : KtxScreen {
 
     private var stage = Stage(FitViewport(GameConfig.WORLD_WIDTH, GameConfig.WORLD_HEIGHT))
-    private var backgroundTexture = Texture(Gdx.files.internal("bg.png"))
-    private var titleTexture = Texture(Gdx.files.internal("title.png"))
-    private var playTexture = Texture(Gdx.files.internal("play.png"))
-    private var playPressTexture = Texture(Gdx.files.internal("playPress.png"))
+    private var backgroundTexture = Texture(Gdx.files.internal("images/bg.png"))
+    private var titleTexture = Texture(Gdx.files.internal("images/title.png"))
+    private var playTexture = Texture(Gdx.files.internal("images/play.png"))
+    private var playPressTexture = Texture(Gdx.files.internal("images/playPress.png"))
     private var play = ImageButton(TextureRegionDrawable(TextureRegion(playTexture)),
             TextureRegionDrawable(TextureRegion(playPressTexture)))
 
